@@ -1,7 +1,7 @@
 module Types
   class DificultyType < Types::BaseEnum
-    value 'easy', ''
-    value 'medium', ''
-    value 'hard', ''
+    value 'easy', 'Easy'
+    value 'medium', 'Medium'
+    value 'hard', 'Hard'
   end
 end

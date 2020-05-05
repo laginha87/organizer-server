@@ -1,7 +1,7 @@
 module Types
   class PriorityType < Types::BaseEnum
-    value "low", ""
-    value "medium", ""
-    value "high", ""
+    value "low", "Low"
+    value "medium", "Medium"
+    value "high", "High"
   end
 end

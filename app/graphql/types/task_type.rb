@@ -1,7 +1,7 @@
 module Types
   class TaskType < Types::BaseObject
-    field :title, Types::StringType, null: true
-    field :description, Types::TextType, null: true
+    field :title, String, null: true
+    field :description, String, null: true
     field :priority, Types::PriorityType, null: true
     field :duration, Types::DurationType, null: true
     field :dificulty, Types::DificultyType, null: true

@@ -1,7 +1,7 @@
 module Types
   class DurationType < Types::BaseEnum
-    value "short", ""
-    value "medium", ""
-    value "long", ""
+    value "short", "Short"
+    value "normal", "Normal"
+    value "long", "Long"
   end
 end
