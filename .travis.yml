@@ -15,7 +15,7 @@ services:
   - postgresql
 
 script:
-  - bundle show --path
+  - bundle show --paths
   - rails db:create db:structure:load
   - rails standard
   - rails test
