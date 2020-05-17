@@ -3,9 +3,9 @@ query GetProjects {
     id
     name
     description
-    default_priority
-    default_duration
-    default_dificulty
-    default_ickyness
+    defaultPriority
+    defaultDuration
+    defaultDificulty
+    defaultIckyness
   }
 }
