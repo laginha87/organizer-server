@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class Queries::InboxQueryTest < ActiveSupport::TestCase
   test "it returns tasks" do

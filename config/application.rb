@@ -1,4 +1,4 @@
-require_relative 'boot'
+require_relative "boot"
 
 require "rails"
 # Pick the frameworks you want:
@@ -34,6 +34,5 @@ module Server
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.active_record.schema_format = :sql
-
   end
 end

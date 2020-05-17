@@ -16,7 +16,7 @@ class GraphqlModelGenerator < Rails::Generators::NamedBase
 
   def translate_type(type)
     {
-      datetime: "date_time",
+      datetime: "date_time"
     }.fetch(type) { |t| t }
   end
 end

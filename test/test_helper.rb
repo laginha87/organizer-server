@@ -1,16 +1,14 @@
-ENV['RAILS_ENV'] ||= 'test'
-require_relative '../config/environment'
-require 'rails/test_help'
+ENV["RAILS_ENV"] ||= "test"
+require_relative "../config/environment"
+require "rails/test_help"
 
-
-if ENV['CI'] == 'true'
-  require 'simplecov'
+if ENV["CI"] == "true"
+  require "simplecov"
   SimpleCov.start
 
-  require 'codecov'
+  require "codecov"
   SimpleCov.formatter = SimpleCov::Formatter::Codecov
 end
-
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
@@ -20,7 +18,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   def read_gql(name)
-    caller_test_file_path= caller[0][/[^:]+/]
+    caller_test_file_path = caller(1..1).first[/[^:]+/]
     caller_test_file_dir = File.dirname(caller_test_file_path)
     caller_test_file_name = File.basename(caller_test_file_path, ".rb")
     query_file_name = File.join(caller_test_file_dir, "test_queries", "#{caller_test_file_name}_#{name}.gql")
