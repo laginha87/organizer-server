@@ -1,0 +1,13 @@
+query GetInbox {
+  inbox {
+    task {
+      id
+      title
+      description
+      priority
+      duration
+      dificulty
+      ickyness
+    }
+  }
+}

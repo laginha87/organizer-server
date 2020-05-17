@@ -1,0 +1,13 @@
+mutation CreateTask($input: CreateNewTaskMutationInput!) {
+  createNewTask(input: $input) {
+    task {
+      id
+      title
+      description
+      priority
+      duration
+      dificulty
+      ickyness
+    }
+  }
+}
