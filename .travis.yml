@@ -4,15 +4,18 @@ rvm:
 
 before_install:
   - cp config/database.yml.travis config/database.yml
-  - /usr/lib/postgresql/12/bin/pg_ctl -D /var/lib/postgresql/12/main -l logfile start
 install:
   - bundle install --with='test'
 env:
-  - DB_HOST=localhost RAILS_ENV=test
+  global:
+    - PGPORT=5432
+    - DB_HOST=localhost
+    - RAILS_ENV=test
 
 
 
 script:
+  - systemctl -l status postgresql@12-main
   - rails db:create db:structure:load
   - rails standard
   - rails test
