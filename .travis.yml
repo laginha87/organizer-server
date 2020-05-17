@@ -11,20 +11,22 @@ env:
     - DB_HOST=localhost
     - RAILS_ENV=test
 
-services:
-  - postgresql
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
 
 script:
   - bundle show --paths
-  - rails db:create db:structure:load
+  - rails db:structure:load
   - rails standard
   - rails test
 addons:
   postgresql: "12"
   apt:
     packages:
+      - postgresql-12
+      - postgresql-client-12
       - postgresql-server-dev-12
 cache:
   directories:
-    - vendor/bundle
+    - /home/travis/.rvm/
     - /var/cache/apt
