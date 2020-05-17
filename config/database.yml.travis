@@ -1,3 +1,3 @@
 test:
-  url: "postgresql://travis:travis@localhost/travis_ci_test"
+  url: "postgresql://testing_user:testing_user@localhost/travis_ci_test"
   adapter: postgresql

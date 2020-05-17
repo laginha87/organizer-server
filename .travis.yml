@@ -1,11 +1,12 @@
+sudo: true
 language: ruby
 rvm:
   - 2.6.3
 
 before_install:
   - cp config/database.yml.travis config/database.yml
-  - sudo -u postgres psql -c "CREATE USER travis WITH PASSWORD 'travis'"
-  - sudo -u postgres psql -c "ALTER ROLE travis SUPERUSER"
+  - sudo -u postgres psql -c "CREATE USER testing_user WITH PASSWORD 'testing_user'"
+  - sudo -u postgres psql -c "ALTER ROLE testing_user SUPERUSER"
 install:
   - bundle install --with='test'
 env:
