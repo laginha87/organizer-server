@@ -13,8 +13,10 @@ env:
     - PGVER=12
     - PGPORT=5433
 
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
 script:
-  - rails db:create db:structure:load
+  - rails db:structure:load
   - rails standard
   - rails test
 addons:
