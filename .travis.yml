@@ -4,6 +4,8 @@ rvm:
 
 before_install:
   - cp config/database.yml.travis config/database.yml
+  - sudo -u postgres psql -c "CREATE USER travis WITH PASSWORD 'travis'"
+  - sudo -u postgres psql -c "ALTER ROLE travis SUPERUSER"
 install:
   - bundle install --with='test'
 env:
