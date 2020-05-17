@@ -6,10 +6,10 @@ install:
   - bundle install
 env:
   - DB_HOST=localhost
-before_script:
-  - rails db:create db:structure:load
+  - RAILS_ENV=test
 
 script:
+  - rails db:create db:structure:load
   - rails standard
   - rails test
 addons:
