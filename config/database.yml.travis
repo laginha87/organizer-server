@@ -1,7 +1,3 @@
 test:
-  host: 127.0.0.1
+  url:postgresql:///travis_ci_test
   adapter: postgresql
-  user: postgres
-  password: ''
-  database: travis_ci_test
-  port: 5433
