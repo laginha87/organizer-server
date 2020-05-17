@@ -1,7 +1,4 @@
 ENV["RAILS_ENV"] ||= "test"
-require_relative "../config/environment"
-require "rails/test_help"
-
 if ENV["CI"] == "true"
   require "simplecov"
   SimpleCov.start
@@ -9,6 +6,9 @@ if ENV["CI"] == "true"
   require "codecov"
   SimpleCov.formatter = SimpleCov::Formatter::Codecov
 end
+
+require_relative "../config/environment"
+require "rails/test_help"
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
