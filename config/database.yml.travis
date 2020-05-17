@@ -1,5 +1,6 @@
 test:
   adapter: postgresql
   user: postgres
+  password: postgres
   database: travis_ci_test
   port: 5433

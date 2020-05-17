@@ -10,6 +10,8 @@ env:
   global:
     - DB_HOST=localhost
     - RAILS_ENV=test
+    - PGVER=12
+    - PGPORT=5433
 
 script:
   - rails db:create db:structure:load
