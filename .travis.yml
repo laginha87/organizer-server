@@ -15,7 +15,7 @@ services:
   - postgresql
 
 script:
-  - systemctl -l status postgresql@12-main
+  - bundle show --path
   - rails db:create db:structure:load
   - rails standard
   - rails test
