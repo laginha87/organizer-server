@@ -3,15 +3,17 @@
 one:
   title: MyString
   description: MyText
-  priority: 1
-  duration: 1
-  dificulty: 1
-  ickyness: 1
 
 two:
   title: MyString
   description: MyText
-  priority: 1
-  duration: 1
-  dificulty: 1
-  ickyness: 1
+
+with_project_one:
+  title: MyString
+  description: MyText
+  project: one
+
+with_project_two:
+  title: MyString
+  description: MyText
+  project: two

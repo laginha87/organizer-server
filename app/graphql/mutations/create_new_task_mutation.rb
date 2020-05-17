@@ -9,4 +9,4 @@ module Mutations
             {task: task}
         end
     end
-  end
+end

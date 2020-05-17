@@ -15,25 +15,11 @@ ActiveRecord::Schema.define(version: 2020_05_05_163742) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "projects", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+# Could not dump table "projects" because of following StandardError
+#   Unknown type 'task_priority' for column 'default_priority'
 
-  create_table "tasks", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.integer "priority"
-    t.integer "duration"
-    t.integer "dificulty"
-    t.integer "ickyness"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "project_id"
-    t.index ["project_id"], name: "index_tasks_on_project_id"
-  end
+# Could not dump table "tasks" because of following StandardError
+#   Unknown type 'task_priority' for column 'priority'
 
   add_foreign_key "tasks", "projects"
 end
