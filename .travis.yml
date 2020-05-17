@@ -5,8 +5,9 @@ rvm:
 install:
   - bundle install
 env:
-  - DB_HOST=localhost
-  - RAILS_ENV=test
+  - DB_HOST=localhost RAILS_ENV=test
+
+
 
 script:
   - rails db:create db:structure:load
