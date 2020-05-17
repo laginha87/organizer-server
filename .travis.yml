@@ -8,7 +8,6 @@ install:
   - bundle install --with='test'
 env:
   global:
-    - PGPORT=5432
     - DB_HOST=localhost
     - RAILS_ENV=test
 
