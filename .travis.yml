@@ -11,12 +11,8 @@ env:
     - DB_HOST=localhost
     - RAILS_ENV=test
 
-before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
-
 script:
-  - bundle show --paths
-  - rails db:structure:load
+  - rails db:create db:structure:load
   - rails standard
   - rails test
 addons:
