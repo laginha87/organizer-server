@@ -53,6 +53,21 @@ CREATE TYPE public.task_priority AS ENUM (
 );
 
 
+--
+-- Name: weekday; Type: TYPE; Schema: public; Owner: -
+--
+
+CREATE TYPE public.weekday AS ENUM (
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
+    'sunday'
+);
+
+
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -70,6 +85,40 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: project_timeslots; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.project_timeslots (
+    id bigint NOT NULL,
+    start_time time without time zone,
+    end_time time without time zone,
+    weekday public.weekday,
+    project_id bigint NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: project_timeslots_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.project_timeslots_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: project_timeslots_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.project_timeslots_id_seq OWNED BY public.project_timeslots.id;
+
+
+--
 -- Name: projects; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -82,7 +131,9 @@ CREATE TABLE public.projects (
     default_dificulty public.task_dificulty,
     default_ickyness public.task_ickyness,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    due_date timestamp without time zone,
+    defer_date timestamp without time zone
 );
 
 
@@ -152,6 +203,13 @@ ALTER SEQUENCE public.tasks_id_seq OWNED BY public.tasks.id;
 
 
 --
+-- Name: project_timeslots id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.project_timeslots ALTER COLUMN id SET DEFAULT nextval('public.project_timeslots_id_seq'::regclass);
+
+
+--
 -- Name: projects id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -171,6 +229,14 @@ ALTER TABLE ONLY public.tasks ALTER COLUMN id SET DEFAULT nextval('public.tasks_
 
 ALTER TABLE ONLY public.ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: project_timeslots project_timeslots_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.project_timeslots
+    ADD CONSTRAINT project_timeslots_pkey PRIMARY KEY (id);
 
 
 --
@@ -198,6 +264,13 @@ ALTER TABLE ONLY public.tasks
 
 
 --
+-- Name: index_project_timeslots_on_project_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_project_timeslots_on_project_id ON public.project_timeslots USING btree (project_id);
+
+
+--
 -- Name: index_tasks_on_project_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -213,6 +286,14 @@ ALTER TABLE ONLY public.tasks
 
 
 --
+-- Name: project_timeslots fk_rails_ed32b7696d; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.project_timeslots
+    ADD CONSTRAINT fk_rails_ed32b7696d FOREIGN KEY (project_id) REFERENCES public.projects(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -221,6 +302,8 @@ SET search_path TO "$user", public;
 INSERT INTO "schema_migrations" (version) VALUES
 ('20200502203430'),
 ('20200505163636'),
-('20200505163742');
+('20200505163742'),
+('20200517220636'),
+('20200518193416');
 
 

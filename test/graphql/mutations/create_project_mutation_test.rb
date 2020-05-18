@@ -8,8 +8,11 @@ class Mutations::CreateProjectMutationTest < ActiveSupport::TestCase
       defaultPriority: "high",
       defaultDuration: "long",
       defaultDificulty: "easy",
-      defaultIckyness: "frog"
+      defaultIckyness: "frog",
+      dueDate: "2019-01-14T10:23:00Z",
+      deferDate: "2019-01-23T22:23:00Z"
     }}})
+
     res = project_result["data"]["createProject"]["project"]
 
     assert_equal("New Project", res["name"])
@@ -17,5 +20,7 @@ class Mutations::CreateProjectMutationTest < ActiveSupport::TestCase
     assert_equal("long", res["defaultDuration"])
     assert_equal("easy", res["defaultDificulty"])
     assert_equal("frog", res["defaultIckyness"])
+    assert_equal("2019-01-14T00:00:00Z", res["dueDate"])
+    assert_equal("2019-01-23T00:00:00Z", res["deferDate"])
   end
 end

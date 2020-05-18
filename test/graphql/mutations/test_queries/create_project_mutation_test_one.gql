@@ -8,6 +8,8 @@ mutation CreateProject($input: CreateProjectMutationInput!) {
       defaultDuration
       defaultDificulty
       defaultIckyness
+      deferDate
+      dueDate
     }
   }
 }

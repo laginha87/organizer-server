@@ -4,7 +4,9 @@ module Mutations
     field :project, Types::ProjectType, null: false
 
     def resolve(project:)
-      project = Project.new(project.to_h)
+      attrs = project.to_h
+      attrs.merge!(attrs.slice(:due_date, :defer_date).transform_values{ |date| date.beginning_of_day })
+      project = Project.new(attrs)
       project.save
       {project: project}
     end
