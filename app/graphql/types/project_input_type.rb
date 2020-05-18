@@ -1,5 +1,5 @@
 module Types
-  class CreateProjectInputType < Types::BaseInputObject
+  class ProjectInputType < Types::BaseInputObject
     argument :name, String, required: true
     argument :default_priority, Types::PriorityType, required: true
     argument :default_duration, Types::DurationType, required: true

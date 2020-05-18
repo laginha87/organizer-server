@@ -1,6 +1,6 @@
 module Mutations
   class CreateProjectMutation < Mutations::BaseMutation
-    argument :project, Types::CreateProjectInputType, required: true
+    argument :project, Types::ProjectInputType, required: true
     field :project, Types::ProjectType, null: false
 
     def resolve(project:)

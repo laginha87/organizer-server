@@ -1,0 +1,13 @@
+mutation UpdateProject($input: UpdateProjectMutationInput!) {
+  updateProject(input: $input) {
+    project {
+      id
+      name
+      description
+      defaultPriority
+      defaultDuration
+      defaultDificulty
+      defaultIckyness
+    }
+  }
+}
