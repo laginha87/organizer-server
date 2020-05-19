@@ -3,17 +3,33 @@
 one:
   title: MyString
   description: MyText
+  priority: low
+  duration: short
+  dificulty: hard
+  ickyness: chicken
 
 two:
   title: MyString
   description: MyText
+  priority: low
+  duration: short
+  dificulty: hard
+  ickyness: chicken
 
 with_project_one:
   title: MyString
   description: MyText
   project: one
+  priority: low
+  duration: short
+  dificulty: hard
+  ickyness: chicken
 
 with_project_two:
   title: MyString
   description: MyText
   project: two
+  priority: low
+  duration: short
+  dificulty: hard
+  ickyness: chicken

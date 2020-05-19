@@ -1,0 +1,11 @@
+mutation CreateProject($input: CreateProjectMutationInput!) {
+  createProject(input: $input) {
+    project {
+      timeslots {
+        weekday
+        startTime
+        endTime
+      }
+    }
+  }
+}

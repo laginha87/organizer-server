@@ -7,5 +7,6 @@ module Types
     argument :default_ickyness, Types::IckynessType, required: true
     argument :due_date, Types::DateTimeType, required: false
     argument :defer_date, Types::DateTimeType, required: false
+    argument :timeslots, [Types::ProjectTimeslotInputType], required: false
   end
 end
