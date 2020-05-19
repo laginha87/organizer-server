@@ -90,8 +90,8 @@ CREATE TABLE public.ar_internal_metadata (
 
 CREATE TABLE public.project_timeslots (
     id bigint NOT NULL,
-    start_time time without time zone,
-    end_time time without time zone,
+    start_time smallint,
+    end_time smallint,
     weekday public.weekday,
     project_id bigint NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,

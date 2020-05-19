@@ -5,4 +5,5 @@ class Project < ApplicationRecord
   enum Enums::ICKYNESS[:default_ickyness]
 
   has_many :tasks
+  has_many :timeslots, class_name: "ProjectTimeslot"
 end

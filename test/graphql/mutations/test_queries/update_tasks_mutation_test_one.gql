@@ -1,0 +1,10 @@
+mutation UpdateProject($input: UpdateTasksMutationInput!) {
+  updateTasks(input: $input) {
+    tasks {
+      priority
+      duration
+      dificulty
+      ickyness
+    }
+  }
+}
